@@ -3,7 +3,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url(../public/—Pngtree—3d\ neon\ light\ abstract\ background_986341.png);
+  background-image: url(../public/27230.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -125,6 +125,7 @@ ol {
   text-decoration: none;
   color: #fff;
   font-size: 20px;
+  font-weight: 600;
   padding: 8px 4px;
   margin-left: 25px;
   display: inline-flex;
