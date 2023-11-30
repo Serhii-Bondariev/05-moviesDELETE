@@ -5,22 +5,28 @@ import styles from './SearchForm.module.css';
 const SearchForm = ({ onSubmit }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(searchQuery, e);  // Змінено цей рядок
+    onSubmit(searchQuery, e);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.moviesSearch}>
-        <div>Search... </div>
+        <div>Search Movies by Title </div>
         <input
           className={styles.moviesSearchInput}
           type="text"
           placeholder="Search for a movie..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          
+          
         />
+
+        
+
         <button className={styles.moviesSearchBtn} type="submit">
           Search
         </button>

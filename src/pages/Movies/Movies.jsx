@@ -8,38 +8,56 @@ import DefaultPoster from 'components/DefaultPoster/DefaultPoster';
 import SearchForm from 'components/SearchForm/SearchForm';
 
 const Movies = () => {
-  const [searchTerm, ] = useState('');
+  const [searchQuery, ] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
   
 
   const fetchMovies = async () => {
-    try {
-      const response = await axios.get(
-        'https://api.themoviedb.org/3/search/movie',
-        {
-          params: {
-            language: 'uk-UA',
-            api_key: '47b0a612b169acf1eb58a4d87a2b2bdd',
-            query: searchTerm,
-          },
-        }
-      );
-
-      if (response.data.results.length === 0) {
-        toast.warn('No movies found with that name');
+  try {
+    const response = await axios.get(
+      'https://api.themoviedb.org/3/search/movie',
+      {
+        params: {
+          language: 'uk-UA',
+          api_key: '47b0a612b169acf1eb58a4d87a2b2bdd',
+          query: searchQuery,
+        },
       }
+    );
 
-      setSearchResults(response.data.results);
-    } catch (error) {
-      console.error('Error fetching movies:', error);
+    console.log('Search Results:', response.data.results); // Додайте цей рядок для відстеження результатів пошуку
+    if (response.data.results.length === 0) {
+      toast.warn('No movies found with that name');
     }
-  };
 
- const handleSearchSubmit = async (e) => {
+    setSearchResults(response.data.results);
+  } catch (error) {
+    console.error('Error fetching movies:', error);
+    toast.error('Error fetching movies. Please try again.');
+  }
+};
+
+
+ const handleSearchSubmit = async (searchQuery, e) => {
   e.preventDefault();
+  console.log('Search Query:', searchQuery); // Додайте цей рядок для відстеження значення searchQuery
+  if (searchQuery.trim() === '') {
+    toast.warn('Please enter a movie title for search');
+    return;
+  }
   await fetchMovies();
 };
+
+
+// const handleSearchSubmit = async () => {
+//   if (searchQuery.trim() === '') {
+//     toast.warn('Please enter a movie title for search');
+//     return;
+//   }
+//   await fetchMovies();
+// };
+
 
 
   return (

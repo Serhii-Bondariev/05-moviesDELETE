@@ -103,7 +103,17 @@ const MovieDetails = () => {
                   </div>
 
                   <h4>Production: </h4>
-                  {movieDetails.production_companies.map((company, index) => (
+                  {movieDetails.production_companies.map((company) => (
+  <img
+    key={company.id}  // Змінено на company.id
+    className={styles.movieDetailsLogo}
+    src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
+    alt={company.name}
+    // title={company.name}
+  />
+))}
+
+                  {/* {movieDetails.production_companies.map((company, index) => (
                     
                     <img
                       className={styles.movieDetailsLogo}
@@ -113,7 +123,7 @@ const MovieDetails = () => {
                       // title={company.name}
                     />
 
-                  ))}
+                  ))} */}
                 </li>
               </ul>
             </section>
