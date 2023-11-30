@@ -42,7 +42,7 @@ const Cast = ({ movieId }) => {
 
   return (
     <div>
-      <h3>Cast</h3>
+      <div className={styles.castTitle}>Cast</div>
       <ul className={styles.castList}>
         {cast.map(actor => (
           <li className={styles.card} key={actor.id}>

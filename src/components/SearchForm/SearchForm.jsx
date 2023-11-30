@@ -1,22 +1,30 @@
 // components/SearchForm.js
 import React, { useState } from 'react';
+import styles from './SearchForm.module.css';
 
 const SearchForm = ({ onSubmit }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(searchQuery);
+    onSubmit(searchQuery, e);  // Змінено цей рядок
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={e => setSearchQuery(e.target.value)}
-      />
-      <button type="submit">Search</button>
+      <div className={styles.moviesSearch}>
+        <div>Search... </div>
+        <input
+          className={styles.moviesSearchInput}
+          type="text"
+          placeholder="Search for a movie..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button className={styles.moviesSearchBtn} type="submit">
+          Search
+        </button>
+      </div>
     </form>
   );
 };

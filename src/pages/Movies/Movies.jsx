@@ -5,10 +5,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './Movies.module.css';
 import DefaultPoster from 'components/DefaultPoster/DefaultPoster';
+import SearchForm from 'components/SearchForm/SearchForm';
 
 const Movies = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, ] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+
+  
 
   const fetchMovies = async () => {
     try {
@@ -33,37 +36,25 @@ const Movies = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await fetchMovies();
-  };
+ const handleSearchSubmit = async (e) => {
+  e.preventDefault();
+  await fetchMovies();
+};
+
 
   return (
-    <div className={styles.moviesContainer}>
+ <div className={styles.moviesContainer}>
       <ToastContainer />
-      <form onSubmit={handleSubmit}>
-        <div className={styles.moviesSearch}>
-          <Link className={styles.moviesSearchBtn} to="/">
+       <Link className={styles.moviesSearchBtn} to="/">
             Go back
-          </Link>
-          <div>Search Movies by Title </div>
-          <input
-            className={styles.moviesSearchInput}
-            type="text"
-            placeholder="Search for a movie..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button className={styles.moviesSearchBtn} type="submit">
-            Search
-          </button>
-        </div>
-      </form>
+      </Link>
+      <SearchForm onSubmit={handleSearchSubmit} />
+      
       <div className="movies_container">
         <ul className="movies_list">
           {searchResults.length > 0 &&
             searchResults.map((movie) => (
-  <li key={movie.id} className={styles.card}>
+  <li key={movie.id} className={styles.movieCard}>
     <NavLink to={`/movies/${movie.id}`}>
       {movie.poster_path ? (
         <img

@@ -1,3 +1,10 @@
+.castTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 20px 20px 25px 20px;
+}
+
 .castList {
   list-style-type: none;
   list-style-position: inside;

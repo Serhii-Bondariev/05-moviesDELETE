@@ -37,17 +37,18 @@ const Reviews = ({ movieId }) => {
     return <Loader />;
   }
 
-  return (
+    return (
+        <div>
+            
+            <div className={styled.reviewsTitle}>Reviews</div>
+
     <div className={styled.reviewsContainer}>
-      <h3 className={styled.reviewsTitle}>Reviews</h3>
       <ul className={styled.reviewsList}>
         {limitedReviews.map(review => (
           <li className={styled.reviewsItem} key={review.id}>
             <p className={styled.reviewsAuthor}>{review.author}</p>
             <p className={styled.reviewsContent}>{review.content}</p>
-            <p className={styled.reviewsRating}>
-              Rating: {review.author_details.rating}
-            </p>
+            
             <a
               href={review.url}
               target="_blank"
@@ -65,7 +66,8 @@ const Reviews = ({ movieId }) => {
           <a href={`/movies/${movieId}/full-reviews`}>More Info</a>
         </button>
       )} */}
-    </div>
+            </div>
+      </div>
   );
 };
 

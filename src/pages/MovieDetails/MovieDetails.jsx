@@ -123,8 +123,8 @@ const MovieDetails = () => {
             {showCast && <Cast movieId={movieId} />}
             {showReviews && <Reviews movieId={movieId} />}
             <nav>
-              <button type="button" onClick={toggleCast}>Cast</button>
-              <button type="button" onClick={toggleReviews}>Reviews</button>
+              <button className={styles.movieDetailsBtn} type="button" onClick={toggleCast}>Cast</button>
+              <button className={styles.movieDetailsBtn} type="button" onClick={toggleReviews}>Reviews</button>
             </nav>
           </div>
         </div>

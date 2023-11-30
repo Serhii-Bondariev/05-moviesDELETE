@@ -3,11 +3,11 @@
 body {
   margin: 0;
   padding: 0;
- background-image: url(../public/27230.jpg);
+  background-image: url(../public/—Pngtree—3d\ neon\ light\ abstract\ background_986341.png);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -55,7 +55,7 @@ ol {
 .movies_home-title {
   margin-bottom: 20px;
   text-align: center;
-  color: rgba(255,255,255,.6);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .movies_img {
@@ -77,12 +77,12 @@ ol {
 .movies_item {
   border-radius: 6px;
   /* From https://css.glass */
-background: rgba(255, 255, 255, 0.42);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.42);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   overflow: hidden;
   width: 300px;
   height: 600px;
@@ -133,7 +133,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .headerLinks:hover {
-  color: rgb(115, 24, 24);
+  color: rgb(177, 162, 162);
   border-radius: 8px;
 }
 
@@ -144,8 +144,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 
 .header {
   display: flex;
-  background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
-  box-shadow: 0px 5px 21px -11px rgba(16, 14, 15, 2.1);
+
   align-items: center;
   height: 80px;
   margin-bottom: 40px;
@@ -163,3 +162,21 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     transition: all 0.3s ease;
     margin-left: 40px;
   } */
+
+/* button {
+     color: black;
+    font-size: 20px;
+    padding: 8px 16px;
+    margin-left: 25px;
+    align-items: center;
+    border-bottom: 2px solid #2196f3d6;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+    background-color: #fff;
+    text-decoration: none;
+}
+
+.button:hover {
+  box-shadow: rgba(253, 76, 0, 0.5) 0 3px 8px;
+} */

@@ -1,112 +1,87 @@
 .moviesContainer {
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .moviesSearchWrapper {
-    width: 100%;
-  
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .movieDetailsTitle {
-    text-align: center;
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
-  
-  .moviesSearchBtn {
-    margin-right: inherit;
-    text-decoration: none;
-    color: black;
-    font-size: 20px;
-    padding: 8px 16px;
-    margin-left: 25px;
-    align-items: center;
-    border-bottom: 2px solid #2196f3d6;
-    border-radius: 8px;
-    transition: all 0.5s ease;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-  }
-  
-  .moviesSearchBtn:hover {
-    color: #991212;
-    transition: all 0.5s ease;
-    /* background-color: #2196f3d6; */
-    color: solid #f34121d6;
-    cursor: pointer;
-  }
-  
-  .moviesSearch {
-    display: flex;
-    background: rgba(255, 255, 255, 0.42);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    align-items: center;
-    justify-content: space-evenly;
-    /* margin-top: 20px; */
-    margin-bottom: 20px;
-    /* margin-left: 20px; */
-    /* margin-right: 20px; */
-    border-radius: 8px;
-    /* border-bottom: 2px solid #2196f3d6; */
-    padding: 8px 16px;
-    /* box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); */
-    /* background-color: #fff; */
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
-  
-  
-  .moviesSearchInput {
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 8px;
-    padding: 8px 16px;
-    border: 1px solid #c5ced6d6;
-    border-bottom: 2px solid #2196f3d6;
-  }
-  
-  .moviesSearchInput:hover {
-    border: 1px solid #2196f3d6;
-    cursor: pointer;
-  }
-  
-  .movieDetailsCard {
-    padding: 10px;
-  }
-  
-  .movieLink {
-    margin: 0;
-    text-decoration: none;
-    color: black;
-    font-size: 18px;
-    font-weight: 700;
-  
-    align-items: center;
-  }
-  
-  .movieDetailsText {
-    font-size: 14px;
-    font-weight: 400;
-  
-    margin-bottom: 10px;
-    margin-top: 10px;
-  }
 
-  .movieCard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
+.moviesSearchWrapper {
+  width: 100%;
+
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.movieDetailsTitle {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.movieDetailsCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px;
+}
+
+.movieLink {
+  margin: 0;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: 700;
+
+  align-items: center;
+}
+
+.movieDetailsText {
+  font-size: 14px;
+  font-weight: 400;
+
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.movieCard {
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.42);
+  /* border-radius: 16px; */
+  /* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  /* border: 1px solid rgba(255, 255, 255, 0.3); */
+  overflow: hidden;
+  max-width: 300px;
+  max-height: 600px;
+}
+
+.moviesSearchBtn {
+  font-size: unset;
+  border: 0;
+  color: black;
+  padding: 8px 16px;
+  margin-left: 25px;
+  align-items: center;
+  border-bottom: 2px solid #2196f3d6;
+  border-radius: 8px;
+  transition: all 0.5s ease;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  background-color: #fff;
+  text-decoration: none;
+}
+
+.moviesSearchBtn:hover {
+  color: #991212;
+  transition: all 0.5s ease;
+
+  color: solid #f34121d6;
+  cursor: pointer;
+}
