@@ -46,12 +46,12 @@ const MovieDetails = () => {
   if (!movieDetails) {
     return (
       <div>
-        <Loader />{' '}
+        <Loader />
       </div>
     );
   }
 
-  const backLink = location.state?.from ?? '/';
+  const backLink = location.state?.from || '/movies'; // Виправлено тут
 
   return (
     <div className={styles.movieDetailsContainer}>
@@ -104,26 +104,15 @@ const MovieDetails = () => {
 
                   <h4>Production: </h4>
                   {movieDetails.production_companies.map((company) => (
-  <img
-    key={company.id}  // Змінено на company.id
-    className={styles.movieDetailsLogo}
-    src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
-    alt={company.name}
-    // title={company.name}
-  />
-))}
+                   <img
+                     key={company.id} 
+                     className={styles.movieDetailsLogo}
+                     src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
+                     alt={company.name}
+                     // title={company.name}
+                   />
+                      ))}
 
-                  {/* {movieDetails.production_companies.map((company, index) => (
-                    
-                    <img
-                      className={styles.movieDetailsLogo}
-                      key={index}
-                      src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
-                      alt={company.name}
-                      // title={company.name}
-                    />
-
-                  ))} */}
                 </li>
               </ul>
             </section>

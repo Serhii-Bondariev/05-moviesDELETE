@@ -12,16 +12,17 @@ const Cast = lazy(() => import('./'));
 
 const App = () => (
   <div className="app">
-    <Header />
+    return (
+      <Header />
+    
+   
 
     <div className="mainWrapper">
       <main>
         <Routes>
           <Route
             path="/"
-            element={<Suspense fallback={<Loader />}>{<Home />}</Suspense>}
-            exact
-          />
+            element={<Suspense fallback={<Loader />}>{<Home />}</Suspense>} />
           <Route
             path="/movies"
             element={
@@ -57,7 +58,9 @@ const App = () => (
         </Routes>
       </main>
     </div>
+    )
   </div>
+  
 );
 
 export default App;

@@ -1,5 +1,5 @@
-import React, { useState, } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,107 +8,101 @@ import DefaultPoster from 'components/DefaultPoster/DefaultPoster';
 import SearchForm from 'components/SearchForm/SearchForm';
 
 const Movies = () => {
-  const [searchQuery, ] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState(() => {
+    const storedResults = localStorage.getItem('searchResults');
+    return storedResults ? JSON.parse(storedResults) : [];
+  });
 
-  
+  const fetchMovies = async (searchQuery) => {
+    try {
+      const response = await axios.get(
+        'https://api.themoviedb.org/3/search/movie',
+        {
+          params: {
+            language: 'uk-UA',
+            api_key: '47b0a612b169acf1eb58a4d87a2b2bdd',
+            query: searchQuery,
+          },
+        }
+      );
 
-  const fetchMovies = async () => {
-  try {
-    const response = await axios.get(
-      'https://api.themoviedb.org/3/search/movie',
-      {
-        params: {
-          language: 'uk-UA',
-          api_key: '47b0a612b169acf1eb58a4d87a2b2bdd',
-          query: searchQuery,
-        },
-      }
-    );
+      console.log('Search Results:', response.data.results);
+      return response.data.results;
+    } catch (error) {
+      console.error('Error fetching movies:', error);
+      toast.error('Error fetching movies. Please try again.');
+      return [];
+    }
+  };
 
-    console.log('Search Results:', response.data.results); // Додайте цей рядок для відстеження результатів пошуку
-    if (response.data.results.length === 0) {
-      toast.warn('No movies found with that name');
+  const handleSearchSubmit = async (searchQuery, e) => {
+    e.preventDefault();
+
+    if (searchQuery.trim() === '') {
+      toast.warn('Please enter a movie title for search');
+      return;
     }
 
-    setSearchResults(response.data.results);
-  } catch (error) {
-    console.error('Error fetching movies:', error);
-    toast.error('Error fetching movies. Please try again.');
-  }
-};
+    const results = await fetchMovies(searchQuery);
+    setSearchResults(results);
 
-
- const handleSearchSubmit = async (searchQuery, e) => {
-  e.preventDefault();
-  console.log('Search Query:', searchQuery); // Додайте цей рядок для відстеження значення searchQuery
-  if (searchQuery.trim() === '') {
-    toast.warn('Please enter a movie title for search');
-    return;
-  }
-  await fetchMovies();
-};
-
-
-// const handleSearchSubmit = async () => {
-//   if (searchQuery.trim() === '') {
-//     toast.warn('Please enter a movie title for search');
-//     return;
-//   }
-//   await fetchMovies();
-// };
-
-
+    // Збереження результатів у локальне сховище браузера
+    localStorage.setItem('searchResults', JSON.stringify(results));
+  };
 
   return (
- <div className={styles.moviesContainer}>
+    <div className={styles.moviesContainer}>
       <ToastContainer />
-       <Link className={styles.moviesSearchBtn} to="/">
-            Go back
+      <Link className={styles.moviesSearchBtn} to="/">
+        Go back
       </Link>
       <SearchForm onSubmit={handleSearchSubmit} />
-      
-      <div className="movies_container">
-        <ul className="movies_list">
-          {searchResults.length > 0 &&
-            searchResults.map((movie) => (
-  <li key={movie.id} className={styles.movieCard}>
-    <NavLink to={`/movies/${movie.id}`}>
-      {movie.poster_path ? (
-        <img
-          className="movies_img"
-          src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-          alt={movie.title || movie.name}
-        />
-      ) : (
-        <div><DefaultPoster movieData={movie} /></div> 
+
+      {searchResults.length > 0 && (
+        <div className="movies_container">
+          <ul className="movies_list">
+            {searchResults.map((movie) => (
+              <li key={movie.id} className={styles.movieCard}>
+                <Link to={`/movies/${movie.id}`}>
+                  {movie.poster_path ? (
+                    <img
+                      className="movies_img"
+                      src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                      alt={movie.title || movie.name}
+                    />
+                  ) : (
+                    <div>
+                      <DefaultPoster movieData={movie} />
+                    </div>
+                  )}
+                </Link>
+                <div className={styles.movieDetailsCard}>
+                  <div className={styles.movieDetailsTitle}>
+                    <Link to={`/movies/${movie.id}`} className={styles.movieLink}>
+                      <p>{movie.title}</p>
+                    </Link>
+                    <Link
+                      to={`/movies/${movie.id}/reviews`}
+                      className={styles.movieLink}
+                    >
+                      Read Reviews
+                    </Link>
+                  </div>
+                  <div className={styles.movieDetailsText}>
+                    Release Year: {movie.release_date.slice(0, 4)}
+                  </div>
+                  <div className={styles.movieDetailsText}>
+                    Rating: {movie.vote_average.toFixed(1)}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
-    </NavLink>
-              <div className={styles.movieDetailsCard}>
-                <div className={styles.movieDetailsTitle}>
-                  <Link to={`/movies/${movie.id}`} className={styles.movieLink}>
-                    <p>{movie.title}</p>
-                  </Link>
-                  <Link
-                    to={`/movies/${movie.id}/reviews`}
-                    className={styles.movieLink}
-                  >
-                    Read Reviews
-                  </Link>
-                </div>
-                <div className={styles.movieDetailsText}>
-                  Release Year: {movie.release_date.slice(0, 4)}
-                </div>
-                <div className={styles.movieDetailsText}>
-                  Rating: {movie.vote_average.toFixed(1)}
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
     </div>
   );
 };
 
 export default Movies;
+

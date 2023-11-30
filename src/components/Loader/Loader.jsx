@@ -24,7 +24,7 @@ import React from 'react';
 
 const Loader = () => {
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.center}>
   <div className={styles.ring}></div>
   <span className={styles.loading}>Loading...</span>

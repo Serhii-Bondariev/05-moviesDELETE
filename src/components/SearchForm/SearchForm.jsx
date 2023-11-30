@@ -5,7 +5,6 @@ import styles from './SearchForm.module.css';
 const SearchForm = ({ onSubmit }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(searchQuery, e);
@@ -21,12 +20,7 @@ const SearchForm = ({ onSubmit }) => {
           placeholder="Search for a movie..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          
-          
         />
-
-        
-
         <button className={styles.moviesSearchBtn} type="submit">
           Search
         </button>
@@ -36,3 +30,4 @@ const SearchForm = ({ onSubmit }) => {
 };
 
 export default SearchForm;
+
