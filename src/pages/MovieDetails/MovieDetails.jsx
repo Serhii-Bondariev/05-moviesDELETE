@@ -104,12 +104,15 @@ const MovieDetails = () => {
 
                   <h4>Production: </h4>
                   {movieDetails.production_companies.map((company, index) => (
+                    
                     <img
                       className={styles.movieDetailsLogo}
                       key={index}
                       src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
                       alt={company.name}
+                      // title={company.name}
                     />
+
                   ))}
                 </li>
               </ul>
