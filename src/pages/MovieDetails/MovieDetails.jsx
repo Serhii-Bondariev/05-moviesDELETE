@@ -20,7 +20,7 @@ const MovieDetails = () => {
           `https://api.themoviedb.org/3/movie/${movieId}`,
           {
             params: {
-              language: 'en-US',
+              language: 'uk-UA',
               api_key: '47b0a612b169acf1eb58a4d87a2b2bdd',
             },
           }
@@ -54,13 +54,13 @@ const MovieDetails = () => {
   const backLink = location.state?.from || '/movies'; // Виправлено тут
 
   return (
-    <div className={styles.movieDetailsContainer}>
-      <div className={styles.movieDetailsLink}>
+    <div>
+      <div>
         <Link className={styles.MovieDetailslink} to={backLink}>
           GO BACK
         </Link>
       </div>
-      <div className={styles.movieDetailsWrapper}>
+      <div>
         <div className={styles.movieDetails}>
           <img
             className={styles.movieDetailsImg}
@@ -69,7 +69,7 @@ const MovieDetails = () => {
           />
           <div>
             <section className={styles.movieDetailsSection}>
-              <ul className={styles.movieDetailsList}>
+              <ul>
                 <li>
                   <h2>
                     {movieDetails.original_title}{' '}
@@ -101,17 +101,17 @@ const MovieDetails = () => {
                   <div>
                     <h4>Overview:</h4> {movieDetails.overview}
                   </div>
-
                   <h4>Production: </h4>
-                  {movieDetails.production_companies.map((company) => (
-                   <img
-                     key={company.id} 
-                     className={styles.movieDetailsLogo}
-                     src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
-                     alt={company.name}
-                     // title={company.name}
-                   />
-                      ))}
+{movieDetails.production_companies.map((company) => (
+  company.logo_path && (
+    <img
+      key={company.id} 
+      className={styles.movieDetailsLogo}
+      src={`https://image.tmdb.org/t/p/w200${company.logo_path}`}
+      alt={company.name}
+    />
+  )
+))}
 
                 </li>
               </ul>

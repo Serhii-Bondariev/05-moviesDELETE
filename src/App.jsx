@@ -3,64 +3,46 @@ import { Routes, Route } from 'react-router-dom';
 import Loader from './components/Loader/Loader';
 import Reviews from './pages/Reviews/Reviews';
 import Header from './components/Header/Header';
-// import Home from './components/pages/Home/Home';
 
 const Home = lazy(() => import('./pages/Home/Home'));
 const Movies = lazy(() => import('./pages/Movies/Movies'));
 const MovieDetails = lazy(() => import('./pages/MovieDetails/MovieDetails'));
 const Cast = lazy(() => import('./'));
 
-const App = () => (
+const Layout = ({ children }) => (
   <div className="app">
-    return (
-      <Header />
-    
-   
-
+    <Header />
     <div className="mainWrapper">
-      <main>
-        <Routes>
-          <Route
-            path="/"
-            element={<Suspense fallback={<Loader />}>{<Home />}</Suspense>} />
-          <Route
-            path="/movies"
-            element={
-              <Suspense fallback={<Loader />}>
-                <Movies />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/movies/:movieId"
-            element={
-              <Suspense fallback={<Loader />}>
-                <MovieDetails />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/movies/:movieId/cast"
-            element={
-              <Suspense fallback={<Loader />}>
-                <Cast />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/movies/:movieId/reviews"
-            element={
-              <Suspense fallback={<Loader />}>
-                <Reviews />
-              </Suspense>
-            }
-          />
-        </Routes>
-      </main>
+      <main>{children}</main>
     </div>
-    )
   </div>
-  
+);
+
+const App = () => (
+  <Suspense fallback={<Loader />}>
+    <Routes>
+      <Route
+        path="/"
+        element={<Layout><Home /></Layout>}
+      />
+      <Route
+        path="/movies"
+        element={<Layout><Movies /></Layout>}
+      />
+      <Route
+        path="/movies/:movieId"
+        element={<Layout><MovieDetails /></Layout>}
+      />
+      <Route
+        path="/movies/:movieId/cast"
+        element={<Layout><Cast /></Layout>}
+      />
+      <Route
+        path="/movies/:movieId/reviews"
+        element={<Layout><Reviews /></Layout>}
+      />
+    </Routes>
+  </Suspense>
 );
 
 export default App;

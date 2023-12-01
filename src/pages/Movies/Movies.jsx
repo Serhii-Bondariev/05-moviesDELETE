@@ -79,14 +79,14 @@ const Movies = () => {
                 <div className={styles.movieDetailsCard}>
                   <div className={styles.movieDetailsTitle}>
                     <Link to={`/movies/${movie.id}`} className={styles.movieLink}>
-                      <p>{movie.title}</p>
+                      <p className={styles.movieTitle}>{movie.title}</p>
                     </Link>
-                    <Link
+                    {/* <Link
                       to={`/movies/${movie.id}/reviews`}
                       className={styles.movieLink}
                     >
                       Read Reviews
-                    </Link>
+                    </Link> */}
                   </div>
                   <div className={styles.movieDetailsText}>
                     Release Year: {movie.release_date.slice(0, 4)}
